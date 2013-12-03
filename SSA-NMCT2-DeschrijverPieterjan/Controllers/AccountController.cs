@@ -79,7 +79,7 @@ namespace SSA_NMCT2_DeschrijverPieterjan.Controllers
                 // Attempt to register the user
                 try
                 {
-                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
+                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password, propertyValues: new { Email = model.Email });
                     Roles.AddUserToRole(model.UserName, "visitor");
                     WebSecurity.Login(model.UserName, model.Password);
 
@@ -260,6 +260,7 @@ namespace SSA_NMCT2_DeschrijverPieterjan.Controllers
 
             if (User.Identity.IsAuthenticated || !OAuthWebSecurity.TryDeserializeProviderUserId(model.ExternalLoginData, out provider, out providerUserId))
             {
+                
                 return RedirectToAction("Manage");
             }
 
@@ -279,6 +280,8 @@ namespace SSA_NMCT2_DeschrijverPieterjan.Controllers
                         OAuthWebSecurity.CreateOrUpdateAccount(provider, providerUserId, model.UserName);
                         OAuthWebSecurity.Login(provider, providerUserId, createPersistentCookie: false);
 
+
+                        Roles.AddUserToRole(model.UserName, "visitor");
                         return RedirectToLocal(returnUrl);
                     }
                     else
