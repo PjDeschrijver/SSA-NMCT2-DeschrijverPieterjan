@@ -1,0 +1,44 @@
+﻿@model SSA_NMCT2_DeschrijverPieterjan.ViewModel.LineupVM
+
+@{
+    ViewBag.Title = "LineUp";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>LineUp</h2>
+
+<ul id="datums">
+    
+
+@foreach (var item in Model.Dates) {
+    
+@*        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>*@
+        <li>@Html.ActionLink(@item.Date, "Index", new {SelectedDate = item.Date})</li>
+    
+}
+        </ul>
+ <table>
+    @if(Model.SelectedDate != null)
+    {
+
+    foreach (var item in Model.LineUps) {
+    <tr>
+         <td id="band">
+            <img width="250" height="200"src="~/Images/@Html.DisplayFor(modelItem => item.Band.Picture)" />   
+        </td>
+       
+        <td>
+            <p>@Html.ActionLink(item.Band.Name, "Details", new { id=item.Band.ID })</p>                      
+        </td>                     
+       
+       @* <td>@Html.DisplayFor(modelItem => item.Band.Name)</td>*@
+        <td>@Html.DisplayFor(modelItem => item.Stage.Name)</td>
+        <td>@Html.DisplayFor(modelItem => item.From)</td>
+        <td>@Html.DisplayFor(modelItem => item.Until)</td>
+    </tr>
+    }
+}
+
+</table>

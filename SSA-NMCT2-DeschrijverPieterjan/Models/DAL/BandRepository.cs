@@ -32,16 +32,16 @@ namespace SSA_NMCT2_DeschrijverPieterjan.Models.DAL
             string ID = reader["ID"].ToString();
             Band item = new Band();
             item.ID = ID;
-            item.Name = (string)reader["Name"];
+            item.Name = reader["Name"].ToString();
             item.Description = reader["Description"].ToString();
-            item.Facebook = (string)reader["Facebook"];
-            item.Twitter = (string)reader["Twitter"];
-            //item.Youtube = (string)reader["Youtube"];
-            item.Picture = (string)reader["Picture"];
+            item.Facebook = reader["Facebook"].ToString();
+            item.Twitter = reader["Twitter"].ToString();
+            item.Youtube = reader["Youtube"].ToString();
+            item.Picture = reader["Picture"].ToString();
             return item;
 
         }
-        public static List<Band> GetCoursesByLevel(int BandID)
+        public static List<Band> GetBandsByID(string BandID)
         {
             //0.vars          
             //1. SQL instructie 

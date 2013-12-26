@@ -2,17 +2,23 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+        <title>@ViewBag.Title - Moonrise Festival</title>
         <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        @*<link rel="stylesheet" href="themes/MoonriseTheme.min.css" />*@
+        <link rel="stylesheet" href="Site.css" />
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile.structure-1.4.0.min.css" />
+        <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
         <meta name="viewport" content="width=device-width" />
         @Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")
     </head>
-    <body>
+     <body>
+     
         <header>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p class="site-title">@Html.ActionLink("your logo here", "Index", "Home")</p>
+            <div class="content-wrapper" >
+                <div class="float-left" >
+                    <p class="site-title" >@Html.ActionLink("Moonrise Festival", "Index", "Home")</p>
                 </div>
                 <div class="float-right">
                     <section id="login">
@@ -20,14 +26,15 @@
                     </section>
                     <nav>
                         <ul id="menu">
-                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li class="test">@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Nieuws", "Index", "News")</li>
+                            <li>@Html.ActionLink("Bands", "Index", "Band")</li>
+                            <li>@Html.ActionLink("Bestel Tickets", "BestelTicket",  "Ticket")</li>
                             <li>@Html.ActionLink("About", "About", "Home")</li>
                             <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                            <li>@Html.ActionLink("Bestel", "BestelTicket", "Ticket")</li>
-                             @if (Roles.IsUserInRole("Admin"))
-                            {
-                                <li>@Html.ActionLink("Ticket", "Index", "Ticket")</li>
-                             }
+                            @if(Roles.IsUserInRole("Admin")){
+                            <li>@Html.ActionLink("Tickets","Index","Ticket")</li>
+                            }
                         </ul>
                     </nav>
                 </div>
@@ -42,12 +49,13 @@
         <footer>
             <div class="content-wrapper">
                 <div class="float-left">
-                    <p>&copy; @DateTime.Now.Year - My ASP.NET MVC Application</p>
-                </div>
+                    <p>&copy; @DateTime.Now.Year - Moonrise Festival</p>
+                    </div>
             </div>
         </footer>
 
         @Scripts.Render("~/bundles/jquery")
         @RenderSection("scripts", required: false)
+        
     </body>
 </html>

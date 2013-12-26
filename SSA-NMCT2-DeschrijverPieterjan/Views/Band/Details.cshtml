@@ -1,0 +1,49 @@
+﻿@model SSA_NMCT2_DeschrijverPieterjan.ViewModel.BandLineUpVM
+
+
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+    <div id="fb-root"></div>
+<script>(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+    <div id="detailband">
+        <h1>@Html.DisplayFor(model => Model.Band.Name)</h1>
+        <h2></h2>
+        <img src="~/Images/@Html.DisplayFor(model => Model.Band.Picture)"/>
+        <h2> @Html.DisplayFor(model => Model.LineUp.Stage.Name)</h2>
+        <h2>@Html.DisplayFor(model => Model.LineUp.Date)</h2>
+        <h3> @Html.DisplayFor(model => Model.LineUp.From) - @Html.DisplayFor(model => Model.LineUp.Until)</h3>
+        <p>@Html.DisplayFor(model => Model.Band.Description)</p>
+        @*<p>@Html.DisplayFor(model => Model.Band.Country)</p>
+        <div id="spotify">   
+            <p>Luister naar @Html.DisplayFor(model => Model.Band.Name):</p>*@
+ @*   @if(Model.Band.Spotify != null){   
+        <iframe src="https://embed.spotify.com/?uri=spotify:album:@Html.DisplayFor(model => Model.Band.Spotify)&theme=white" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
+        }*@
+              
+        
+        
+</div>
+    
+    <div id="facebook">
+        <div class="fb-like-box" data-href="http://www.facebook.com/@Html.DisplayFor(model => Model.Band.Facebook)" data-height="550" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="true" data-show-border="true"></div>
+    </div>
+
+  
+
+
+
+    
+   
+
+    

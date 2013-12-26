@@ -1,43 +1,38 @@
-﻿@model IEnumerable<SSA_NMCT2_DeschrijverPieterjan.Models.Band>
+﻿@model SSA_NMCT2_DeschrijverPieterjan.ViewModel.HomeVM
 
 @{
-    ViewBag.Title = "Home";
+    ViewBag.Title = "Index";
 }
 
-<h2>Line-up</h2>
 
 
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-       
-        <th>
-            @Html.DisplayNameFor(model => model.Picture)
-        </th>
-        
-        
-        <th></th>
-    </tr>
+<div id="bandindex">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        
-        <td>
-            @Html.DisplayFor(modelItem => item.Picture)
-        </td>
-      
-        
-        <td>
+    
+
+      @foreach (var item in Model.Bands) {
+   
+    <div id="band">
+                <h2>@Html.ActionLink(item.Name, "../Band/Details", new { id=item.ID })</h2>
+                <div id="bandfoto">
+                    <img src="~/Images/@Html.DisplayFor(modelItem => item.Picture)" />
+                </div>                       
+            </div>       
+    
+  
+  }
+ 
            
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) 
-            
-        </td>
-    </tr>
-}
 
-</table>
+
+</div>
+<div id="nieuwtjes">
+    <h1>Laatste Nieuws</h1>
+@foreach (var item in Model.News) {
+   
+           <div id="nieuws">
+        <h1>@Html.DisplayFor(modelItem => item.Title)</h1>
+        <p>@Html.DisplayFor(modelItem => item.Content)</p>
+    </div>  
+}
+    </div>

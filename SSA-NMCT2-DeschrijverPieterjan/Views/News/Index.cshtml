@@ -1,0 +1,15 @@
+﻿@model IEnumerable<SSA_NMCT2_DeschrijverPieterjan.Models.News>
+
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+@foreach (var item in Model) {
+    <div id="nieuws">
+        <h1>@Html.DisplayFor(modelItem => item.Title)</h1>
+        <p>@Html.DisplayFor(modelItem => item.Content)</p>
+    </div>  
+}

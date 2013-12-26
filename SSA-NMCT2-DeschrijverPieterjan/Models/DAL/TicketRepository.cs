@@ -132,5 +132,28 @@ namespace SSA_NMCT2_DeschrijverPieterjan.Models.DAL
             DbParameter[] pars = new DbParameter[] { par1, par2, par3, par4 };
             Database.ModifyData(sSQL, pars);
         }
+        public static List<Ticket> getTicketTypeByEmail(string Email)
+        {
+            //1. SQL instructie 
+            string sSQL = "SELECT * FROM [Ticket]";
+            sSQL += " WHERE [TicketHolderEmail] = @Email";
+            //2. SQL parameters
+            DbParameter idPar = Database.AddParameter("@Email", Email);
+            //3. Haal data op en controleer op null/lege velden
+            DbDataReader reader = Database.GetData(sSQL, idPar);
+
+            List<Ticket> list = new List<Ticket>();
+
+            if (reader != null && reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    Ticket t = Fill(reader);
+                    list.Add(t);
+                }
+            }
+            return list;
+
+        }
     }
     }

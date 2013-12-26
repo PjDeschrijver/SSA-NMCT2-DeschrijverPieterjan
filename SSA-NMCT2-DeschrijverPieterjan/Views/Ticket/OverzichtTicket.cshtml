@@ -1,0 +1,39 @@
+﻿@model IEnumerable<SSA_NMCT2_DeschrijverPieterjan.Models.Ticket>
+
+@{
+    ViewBag.Title = "OverzichtTicket";
+}
+
+<h2>OverzichtTicket</h2>
+
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TicketHolder)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TicketType.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TicketHolder)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TicketType.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Amount)
+        </td>
+        
+    </tr>
+}
+
+</table>

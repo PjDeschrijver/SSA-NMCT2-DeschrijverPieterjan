@@ -13,6 +13,6 @@ namespace SSA_NMCT2_DeschrijverPieterjan.Models
         public string Picture { get; set; }
         public string Twitter { get; set; }
         public string Facebook { get; set; }
-       
+        public string Youtube { get; set; }
     }
 }

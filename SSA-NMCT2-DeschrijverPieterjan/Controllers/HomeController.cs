@@ -1,4 +1,6 @@
-﻿using SSA_NMCT2_DeschrijverPieterjan.Models.DAL;
+﻿using SSA_NMCT2_DeschrijverPieterjan.Models;
+using SSA_NMCT2_DeschrijverPieterjan.Models.DAL;
+using SSA_NMCT2_DeschrijverPieterjan.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,15 +14,44 @@ namespace SSA_NMCT2_DeschrijverPieterjan.Controllers
         [AllowAnonymous]
         public ActionResult Index()
         {
-            //ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
+            List<Band> bands = BandRepository.GetBands();
+            List<News> news = NewsRepository.getNews();
+            List<News> newsIndex = new List<News>();
+            List<Band> bandsIndex = new List<Band>();
+            for (int i = 0; i <= 2; i++)
+            {
+                newsIndex.Add(news[i]);
+                bandsIndex.Add(bands[i]);
+            }
 
-            return View(BandRepository.GetBands());
+            HomeVM model = new HomeVM
+            {
+                Bands = bandsIndex,
+                News = newsIndex
+            };
+
+            return View(model);
         }
+
+        [AllowAnonymous]
+        public PartialViewResult News()
+        {
+            List<News> news = NewsRepository.getNews();
+            List<News> newsIndex = new List<News>();
+
+            for (int i = 0; i >= 0; i--)
+            {
+                newsIndex.Add(news[i]);
+            }
+
+            return PartialView(newsIndex);
+        }
+
 
         [AllowAnonymous]
         public ActionResult About()
         {
-            ViewBag.Message = "Your app description page.";
+            ViewBag.Message = "Sneaky Little Festival";
 
             return View();
         }
@@ -28,15 +59,9 @@ namespace SSA_NMCT2_DeschrijverPieterjan.Controllers
         [AllowAnonymous]
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Contacteer ons";
 
             return View();
-        }
-
-        [AllowAnonymous]
-        public ActionResult Details(string id)
-        {
-            return View(BandRepository.FindById(id));
         }
     }
 }
