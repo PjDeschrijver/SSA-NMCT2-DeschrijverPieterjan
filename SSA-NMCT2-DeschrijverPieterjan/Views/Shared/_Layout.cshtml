@@ -30,8 +30,8 @@
                             <li>@Html.ActionLink("Nieuws", "Index", "News")</li>
                             <li>@Html.ActionLink("Bands", "Index", "Band")</li>
                             <li>@Html.ActionLink("Bestel Tickets", "BestelTicket",  "Ticket")</li>
-                            <li>@Html.ActionLink("About", "About", "Home")</li>
-                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                           @* <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
                             @if(Roles.IsUserInRole("Admin")){
                             <li>@Html.ActionLink("Tickets","Index","Ticket")</li>
                             }

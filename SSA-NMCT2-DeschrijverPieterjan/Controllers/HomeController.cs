@@ -51,7 +51,7 @@ namespace SSA_NMCT2_DeschrijverPieterjan.Controllers
         [AllowAnonymous]
         public ActionResult About()
         {
-            ViewBag.Message = "Sneaky Little Festival";
+            ViewBag.Message = "Moonrise Festival";
 
             return View();
         }
